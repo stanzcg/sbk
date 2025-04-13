@@ -1,9 +1,9 @@
 from typing import List, Dict, Optional
-from kbs.services.vector_service import VectorService
-from kbs.models.schemas import Query
+from sbk.services.vector_service import VectorService
+from sbk.models.schemas import Query
 import logging  # 添加日志模块
 
-from kbs.core.embeddings.factory import EmbeddingFactory
+from sbk.core.embeddings.factory import EmbeddingFactory
 
 # 配置日志
 logger = logging.getLogger(__name__)
@@ -81,12 +81,14 @@ class RetrievalService:
         
         # 创建结果映射
         merged_results = {}
+        logger.debug(len(vector_results))
+        logger.debug(len(bm25_results))
         
         # 处理向量检索结果
         for result in vector_results:
             id = result["id"]
             merged_results[id] = {
-                "doc_id": doc_id,
+                "doc_id": result["doc_id"],
                 "metadata": result["metadata"],
                 "score": result["score"] * vector_weight,
                 "content": result["content"], 
@@ -99,7 +101,7 @@ class RetrievalService:
                 merged_results[id]["score"] += result["score"] * bm25_weight
             else:
                 merged_results[id] = {
-                    "doc_id": id,
+                    "doc_id": result["doc_id"],
                     "metadata": result["metadata"],
                     "score": result["score"] * bm25_weight,
                     "content": result["content"],

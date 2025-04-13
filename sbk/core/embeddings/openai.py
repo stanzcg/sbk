@@ -3,7 +3,7 @@ from typing import List, Union
 import logging
 
 from openai import OpenAI
-from kbs.core.embeddings.base import BaseEmbedding
+from sbk.core.embeddings.base import BaseEmbedding
 
 logger = logging.getLogger(__name__)
 

@@ -1,13 +1,13 @@
 import os
 
 from flask import Flask, request, jsonify
-from kbs.services.document_service import DocumentService
-from kbs.services.vector_service import VectorService
-from kbs.services.retrieval_service import RetrievalService
-from kbs.services.knowledge_base_service import KnowledgeBaseService
-from kbs.core.database import get_db, engine, Base
-from kbs.models.schemas import KnowledgeBaseConfig, SearchRequest, Query
-from kbs.core.exceptions import ValidationError
+from sbk.services.document_service import DocumentService
+from sbk.services.vector_service import VectorService
+from sbk.services.retrieval_service import RetrievalService
+from sbk.services.knowledge_base_service import KnowledgeBaseService
+from sbk.core.database import get_db, engine, Base
+from sbk.models.schemas import KnowledgeBaseConfig, SearchRequest, Query
+from sbk.core.exceptions import ValidationError
 
 app = Flask(__name__)
 

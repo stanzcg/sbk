@@ -1,6 +1,6 @@
 import os
 from sqlalchemy.orm import Session
-from kbs.models.knowledge_base import KnowledgeBase
+from sbk.models.knowledge_base import KnowledgeBase
 
 class KnowledgeBaseService:
     def __init__(self, db: Session):

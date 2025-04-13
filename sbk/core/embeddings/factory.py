@@ -1,7 +1,7 @@
 from typing import Dict, Any
-from kbs.core.embeddings.base import BaseEmbedding
-from kbs.core.embeddings.sentence_transformer import SentenceTransformerEmbedding
-from kbs.core.embeddings.openai import OpenAIEmbedding
+from sbk.core.embeddings.base import BaseEmbedding
+from sbk.core.embeddings.sentence_transformer import SentenceTransformerEmbedding
+from sbk.core.embeddings.openai import OpenAIEmbedding
 
 class EmbeddingFactory:
     """Embedding 工厂类"""

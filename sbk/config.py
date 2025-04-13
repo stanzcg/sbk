@@ -55,7 +55,7 @@ class Config:
         if db_type == "sqlite":
             return DBConfig(
                 type=DBType.SQLITE,
-                database=os.getenv("KBS_DB_PATH", "kbs.db")
+                database=os.getenv("KBS_DB_PATH", "sbk.db")
             )
         
         return DBConfig(

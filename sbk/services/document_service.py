@@ -10,7 +10,7 @@ from langchain_community.document_loaders import (
 )
 import logging
 
-from kbs.core.embeddings.factory import EmbeddingFactory
+from sbk.core.embeddings.factory import EmbeddingFactory
 
 # 配置日志记录
 logging.basicConfig(level=logging.DEBUG)
@@ -74,7 +74,7 @@ class DocumentService:
             logger.debug("Split documents into %d chunks", len(splits))
             
             # 向量化存储
-            from kbs.services.vector_service import VectorService
+            from sbk.services.vector_service import VectorService
             texts = [chunk.page_content for chunk in splits]
             embeddings = self.embedding_model.embed_documents(texts=texts)
             metadatas = [chunk.metadata for chunk in splits]

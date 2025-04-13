@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, DateTime, Text, JSON
 from sqlalchemy.sql import func
-from kbs.core.database import Base
+from sbk.core.database import Base
 
 class KnowledgeBase(Base):
     __tablename__ = "knowledge_bases"

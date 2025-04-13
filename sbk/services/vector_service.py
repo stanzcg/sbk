@@ -9,8 +9,8 @@ from pymilvus import (
     FieldSchema,
     DataType
 )
-from kbs.core.exceptions import VectorStoreError, ResourceNotFoundError
-from kbs.models.schemas import Query
+from sbk.core.exceptions import VectorStoreError, ResourceNotFoundError
+from sbk.models.schemas import Query
 
 
 logger = logging.getLogger(__name__)
@@ -22,7 +22,7 @@ class VectorService:
                  collection_name: str = None,
                  dim: int = 1024,
                  kb_name: str = "default",
-                 index_param: dict = None):
+                 index_params: dict = None):
         """初始化向量服务
         
         Args:
@@ -36,7 +36,7 @@ class VectorService:
         self.collection_name = collection_name or "document_segments"
         self.dim = dim
         self.kb_name = kb_name
-        self.index_param = index_param or {
+        self.index_params = index_params or {
                 "metric_type": "L2",
                 "index_type": "IVF_FLAT",
                 "params": {"nlist": 8}
@@ -152,7 +152,7 @@ class VectorService:
                 param=search_params,
                 limit=top_k,
                 expr=filter_expr,
-                output_fields=["doc_id", "metadata", "content"]
+                output_fields=["doc_id", "metadata", "content", "id"]
             )
             
             # 格式化结果
@@ -162,7 +162,8 @@ class VectorService:
                     "score": float(hit.score),
                     "doc_id": hit.entity.get("doc_id"),
                     "metadata": hit.entity.get("metadata"),
-                    "content": hit.entity.get("content")
+                    "content": hit.entity.get("content"),
+                    "id": hit.entity.get("id"),
                 })
             
             return hits
@@ -227,5 +228,5 @@ class VectorService:
             if utility.has_collection(self.collection_name):
                 self.collection.release()
             connections.disconnect("default")
-        except:
-            pass 
+        except Exception as e:
+            logger.error("Error during disconnection: %s", str(e)) 

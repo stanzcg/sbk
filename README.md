@@ -32,7 +32,7 @@ kbs/
 1. SQLite（默认）
 ```bash
 KBS_DB_TYPE=sqlite
-KBS_DB_PATH=kbs.db
+KBS_DB_PATH=sbk.db
 ```
 
 2. PostgreSQL
