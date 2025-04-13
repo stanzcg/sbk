@@ -1,0 +1,38 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="kbs",
+    version="0.1.0",
+    packages=find_packages(),
+    install_requires=[
+        "flask>=2.0.1",
+        "pymilvus>=2.3.4",
+        "python-dotenv>=0.19.0",
+        "langchain>=0.0.184",
+        "python-magic>=0.4.27",
+        "tiktoken>=0.5.1",
+        "unstructured>=0.10.30",
+        "pypdf>=3.8.1",
+        "python-docx>=1.0.1",
+        "pandas>=2.1.1",
+        "numpy>=1.24.3",
+        "scikit-learn>=1.3.0",
+        "sentence-transformers>=2.2.2",
+        "faiss-cpu>=1.7.2",
+        "python-multipart>=0.0.5",
+        "sqlalchemy>=1.4.41",
+        "psycopg2-binary>=2.9.5",
+        "python-jose>=3.3.0",
+        "passlib>=1.7.4",
+        "bcrypt>=4.0.1",
+        "openai>=1.12.0",
+        "pydantic>=2.6.1",
+        "psutil>=5.9.5",
+        "requests>=2.31.0"
+    ],
+    python_requires=">=3.10",
+    description="Knowledge Base System with RAG capabilities",
+    author="Your Name",
+    author_email="your.email@example.com",
+    url="https://github.com/yourusername/kbs",
+) 
