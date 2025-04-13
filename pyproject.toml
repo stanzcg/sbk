@@ -1,5 +1,5 @@
 [project]
-name = "kbs"
+name = "sbk"
 version = "0.1.0"
 description = "Knowledge Base System with RAG capabilities"
 requires-python = ">=3.10"
